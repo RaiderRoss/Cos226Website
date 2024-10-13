@@ -67,7 +67,7 @@ export default function Practical6Page() {
           <p>Introduction: Lessons from the Battlefield</p>
           <ul>
             <li>Brief recap of the synchronization methods and the experiments conducted.</li>
-            <li>Overview of key insights gained from Chapter 2's plots and performance results.</li>
+            <li>Overview of key insights gained from Chapter 2s plots and performance results.</li>
             <li>Purpose of this chapter: to analyze the data in depth, explain trends, and draw conclusions.</li>
           </ul>
 
