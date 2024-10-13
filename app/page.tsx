@@ -13,7 +13,7 @@ export default function Home() {
 
         <br />
         <span className="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-500 text-transparent bg-clip-text text-3xl">
-          Let's unravel the mysteries of threads and concurrency with a splash of fun!
+          Let us unravel the mysteries of threads and concurrency with a splash of fun!
         </span>
       </div>
 
