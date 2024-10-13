@@ -15,13 +15,13 @@ export default function Practical6Page() {
 
   useEffect(() => {
     // Create the Audio instance in useEffect to avoid server-side issues
-    const audioInstance = new Audio('/modal/sound.mp3');
+    const audioInstance = new Audio(/modal/sound.mp3);
     setAudio(audioInstance);
 
     return () => {
       // Cleanup audio instance if needed
       audioInstance.pause();
-      audioInstance.src = '';
+      audioInstance.src = ;
     };
   }, []);
 
@@ -69,7 +69,7 @@ export default function Practical6Page() {
           <p>Introduction: Lessons from the Battlefield</p>
           <ul>
             <li>Brief recap of the synchronization methods and the experiments conducted.</li>
-            <li>Overview of key insights gained from Chapter 2's plots and performance results.</li>
+            <li>Overview of key insights gained from Chapter 2s plots and performance results.</li>
             <li>Purpose of this chapter: to analyze the data in depth, explain trends, and draw conclusions.</li>
           </ul>
 
@@ -156,7 +156,7 @@ export default function Practical6Page() {
             <li><strong>Heavy Contention:</strong>
               <ul>
                 <li>Breakdown of why coarse-grained synchronization, despite its flaws, performed relatively better in high-contention scenarios.</li>
-                <li>Further examination of fine-grained locking's collapse under extreme loads.</li>
+                <li>Further examination of fine-grained lockings collapse under extreme loads.</li>
                 <li>Optimistic synchronization’s frequent retries leading to catastrophic performance degradation.</li>
               </ul>
             </li>
