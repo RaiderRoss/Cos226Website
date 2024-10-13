@@ -1,25 +1,22 @@
 "use client";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { Image } from "@nextui-org/react";
 import { Slider } from "@nextui-org/slider";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-
+import { Divider } from "@nextui-org/react";
 export default function Practical6Page() {
   const [option, setOption] = useState(0);
   const [operation, setOperation] = useState(0);
   const [contention, setContention] = useState(0);
-  const [audio, setAudio] = useState<HTMLAudioElement | null>(null); // Initialize audio as null
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [hasBeenOpened, setHasBeenOpened] = useState(false);
 
   useEffect(() => {
-    // Create the Audio instance in useEffect to avoid server-side issues
     const audioInstance = new Audio('/modal/sound.mp3');
     setAudio(audioInstance);
-
     return () => {
-      // Cleanup audio instance if needed
       audioInstance.pause();
       audioInstance.src = '';
     };
@@ -59,116 +56,116 @@ export default function Practical6Page() {
 
         <AccordionItem key="3" aria-label="Chapter 2" title="Chapter 2: The Trials of Synchronization">
           <p>The battlefield had been set. The lone process was no more—replaced by a legion of threads, each vying for control, each a potential ally or enemy depending on how they were synchronized. The promise of speed and efficiency beckoned, but only for those threads that played by the rules of coordination. And so, the tests began.</p>
+          <Divider className="my-4" />
           <p className="font-semibold">The Arena: Contention Types</p>
           <p>To understand how threads behaved under different conditions, I set up the experiments like a gladiator tournament—throwing my threads into increasingly chaotic arenas. Some were pitted against light contention, where few resources were shared, and the race for control was mild. Others were plunged into the fiery pits of heavy contention, where every thread clawed at the same limited resources, eager to claim dominance.</p>
+          <Divider className="my-4" />
           <p className="font-semibold">The Results: Plots of Chaos</p>
           <p>Once the tests had run their course, the battlefield lay strewn with the wreckage of threads—some victorious, others starved and deadlocked, their operations never completed. But from this destruction emerged data—valuable insights into the costs of contention, the performance of different synchronization methods, and the limits of concurrency.</p>
         </AccordionItem>
-
         <AccordionItem key="4" aria-label="Chapter 3" title="Chapter 3: The Aftermath - Dissecting the Results">
           <p>Introduction: Lessons from the Battlefield</p>
           <ul>
             <li>Brief recap of the synchronization methods and the experiments conducted.</li>
-            <li>Overview of key insights gained from Chapter 2s plots and performance results.</li>
+            <li>Overview of key insights gained from Chapter 2's plots and performance results.</li>
             <li>Purpose of this chapter: to analyze the data in depth, explain trends, and draw conclusions.</li>
           </ul>
 
-          <p className="font-semibold">Section 1: Fine-Grained Synchronization - Precision at a Price</p>
-          <ol>
-            <li><strong>Key Observations:</strong>
-              <ul>
-                <li>Summary of performance trends from the Fine-Grained Synchronization plot.</li>
-                <li>Notable inflection points where performance begins to degrade.</li>
-              </ul>
-            </li>
-            <li><strong>Analysis:</strong>
-              <ul>
-                <li>Breakdown of overhead costs due to excessive locking and unlocking.</li>
-                <li>Examination of how thread contention impacts the performance at higher thread counts.</li>
-              </ul>
-            </li>
-            <li><strong>Strengths & Weaknesses:</strong>
-              <ul>
-                <li>Situations where fine-grained locking is optimal (e.g., low contention environments).</li>
-                <li>Cases where complexity becomes its downfall.</li>
-              </ul>
-            </li>
-          </ol>
+          <Divider className="my-4" />
 
-          <p className="font-semibold">Section 2: Coarse-Grained Synchronization - The Sledgehammer Approach</p>
-          <ol>
-            <li><strong>Key Observations:</strong>
-              <ul>
-                <li>Performance curve under coarse-grained locking.</li>
-                <li>Discussion on the sharp performance drop as thread count increases.</li>
-              </ul>
-            </li>
-            <li><strong>Analysis:</strong>
-              <ul>
-                <li>Exploration of how the single lock becomes a bottleneck.</li>
-                <li>Correlation between thread contention and diminishing returns.</li>
-              </ul>
-            </li>
-            <li><strong>Strengths & Weaknesses:</strong>
-              <ul>
-                <li>Where coarse-grained locking performs surprisingly well (e.g., high contention).</li>
-                <li>Situations where its simplicity leads to excessive waiting and reduced efficiency.</li>
-              </ul>
-            </li>
-          </ol>
 
-          <p className="font-semibold">Section 3: Optimistic Synchronization - High Risk, High Reward</p>
-          <ol>
-            <li><strong>Key Observations:</strong>
-              <ul>
-                <li>Early performance improvements and the sudden spikes in execution time as contention increases.</li>
-                <li>Explanation of the retry mechanism and its cost.</li>
-              </ul>
-            </li>
-            <li><strong>Analysis:</strong>
-              <ul>
-                <li>Evaluation of why optimistic synchronization succeeds in light contention but struggles under heavy loads.</li>
-                <li>Discussion on the penalty of frequent retries.</li>
-              </ul>
-            </li>
-            <li><strong>Strengths & Weaknesses:</strong>
-              <ul>
-                <li>Scenarios where optimistic synchronization shines (e.g., minimal contention).</li>
-                <li>Its downfall when contention grows, and threads begin to collide frequently.</li>
-              </ul>
-            </li>
-          </ol>
+          <p className="font-semibold">Section 1: Running at 100 operations</p>
 
-          <p className="font-semibold">Section 4: Comparative Analysis Across Contention Levels</p>
-          <ol>
-            <li><strong>Light Contention:</strong>
-              <ul>
-                <li>Analysis of the best-performing strategy under minimal resource sharing.</li>
-                <li>Why fine-grained and optimistic approaches lead the pack.</li>
-              </ul>
-            </li>
-            <li><strong>Medium Contention:</strong>
-              <ul>
-                <li>Observations on performance shifts.</li>
-                <li>How contention levels start exposing weaknesses in both fine-grained and optimistic approaches.</li>
-              </ul>
-            </li>
-            <li><strong>Heavy Contention:</strong>
-              <ul>
-                <li>Breakdown of why coarse-grained synchronization, despite its flaws, performed relatively better in high-contention scenarios.</li>
-                <li>Further examination of fine-grained lockings collapse under extreme loads.</li>
-                <li>Optimistic synchronization’s frequent retries leading to catastrophic performance degradation.</li>
-              </ul>
-            </li>
-          </ol>
+          <p className="font-semibold">High Contention</p>
+          <ul>
+            <li>Type of Operation Add Only: Results and analysis</li>
+            <li>•All synchronization method perform equall</li>
+            <li>Type of Operation Add and Remove: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse with spikes in optimistic</li>
+            <li>Type of Operation Add and Contains: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse</li>
+            <li>Type of Operation Add and Remove and Contains: Results and analysis</li>
+          </ul>
+
+          <p className="font-semibold">Medium Contention</p>
+          <ul>
+            <li>Type of Operation Add Only: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse with a spike in optimistic at 21 threads</li>
+            <li>Type of Operation Add and Remove: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse</li>
+            <li>Type of Operation Add and Contains: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse</li>
+            <li>Type of Operation Add and Remove and Contains: Results and analysis</li>
+            <li>•The synchronization methods all peform abit worse with spikes in fine grained</li>
+          </ul>
+
+          <p className="font-semibold">Low Contention</p>
+          <ul>
+            <li>•The synchronization methods all peform equally independant of the type of operation</li>
+          </ul>
+
+          <Divider className="my-4" />
+
+          <p className="font-semibold">Section 2: Running at 500 operations</p>
+
+          <p className="font-semibold">High Contention</p>
+          <ul>
+            <li>Type of Operation Add Only: Results and analysis</li>
+            <li>•Fine grained performs abit worse than the rest</li>
+            <li>Type of Operation Add and Remove: Results and analysis</li>
+            <li>•Lots of spikes in optimistic with fine grained beign the worst</li>
+            <li>Type of Operation Add and Contains: Results and analysis</li>
+            <li>•Fine grained synchronization just dies with added contains method</li>
+            <li>Type of Operation Add and Remove and Contains: Results and analysis</li>
+            <li>•Big variation in optimistic synchronization and fine grained still performs poorly</li>
+          </ul>
+
+          <p className="font-semibold">Medium Contention</p>
+          <ul>
+            <li>•Same as high contention but massive variation in fine grained synchronization method</li>
+          </ul>
+
+          <p className="font-semibold">Low Contention</p>
+          <ul>
+            <li>•Same results as medium and high contention combined</li>
+          </ul>
+
+          <Divider className="my-4" />
+
+          <p className="font-semibold">Section 3: Running at 1000 operations</p>
+
+          <p className="font-semibold">High Contention</p>
+          <ul>
+            <li>Type of Operation Add Only: Results and analysis</li>
+            <li>•Fine grained performs the worst with optimistic and coarse grained behaving equally</li>
+            <li>Type of Operation Add and Remove: Results and analysis</li>
+            <li>•Optimistic has massive variations in the results </li>
+            <li>Type of Operation Add and Contains: Results and analysis</li>
+            <li>•Fine grained is clearly the looser with optimistic in second and coarse is the winner</li>
+            <li>Type of Operation Add and Remove and Contains: Results and analysis</li>
+            <li>•Optimistic gets absolutely wrecked in this scenario with fine grained in second place</li>
+          </ul>
+
+          <p className="font-semibold">Medium Contention</p>
+          <ul>
+          <li>•Same results as high contention</li>
+          </ul>
+
+          <p className="font-semibold">Low Contention</p>
+          <ul>
+          <li>•Same results as medium and high contention</li>
+          </ul>
+
+
+          <Divider className="my-4" />
 
           <p><strong>Conclusion: Navigating the Future of Concurrency</strong></p>
           <ul>
             <li>Recap of key findings from the results.</li>
-            <li>Final thoughts on the balance between concurrency gains and the overhead of managing synchronization.</li>
-            <li>A look ahead to future challenges, such as deadlocks, race conditions, and starvation, to be tackled in the next chapter.</li>
+            <li>Clearly coarse grained synchronization is the best of all and the others vary depending on their scenario</li>
           </ul>
         </AccordionItem>
+
 
         <AccordionItem key="5" aria-label="Chapter 4" title="Chapter 4: References - A Comedy of Errors">
           <p>Introduction: The Land of Misfit References</p>
@@ -215,9 +212,10 @@ export default function Practical6Page() {
                   isBlurred
                   width={50}
                   height={50}
-                  alt="NextUI hero Image with delay"
+                  alt="Doggo"
                   src={"./modal/doge.gif"}
                 />
+
               </ModalHeader>
 
               <ModalBody>
@@ -225,7 +223,7 @@ export default function Practical6Page() {
                   isBlurred
                   width={800}
                   height={400}
-                  alt="NextUI hero Image with delay"
+                  alt="Rickroll"
                   src={"./modal/rickroll.gif"}
                 />
               </ModalBody>
@@ -251,9 +249,10 @@ export default function Practical6Page() {
             isBlurred
             width={800}
             height={400}
-            alt="NextUI hero Image with delay"
+            alt="Results"
             src={getImageSrc()}
           />
+
           <br />
           <br />
           <Slider
