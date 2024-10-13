@@ -15,13 +15,13 @@ export default function Practical6Page() {
 
   useEffect(() => {
     // Create the Audio instance in useEffect to avoid server-side issues
-    const audioInstance = new Audio(/modal/sound.mp3);
+    const audioInstance = new Audio('/modal/sound.mp3');
     setAudio(audioInstance);
 
     return () => {
       // Cleanup audio instance if needed
       audioInstance.pause();
-      audioInstance.src = ;
+      audioInstance.src = '';
     };
   }, []);
 
