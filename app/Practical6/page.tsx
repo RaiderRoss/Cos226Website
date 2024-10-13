@@ -177,7 +177,7 @@ export default function Practical6Page() {
           <p className="font-semibold">1. Lecture Slides: The Silent Heroes</p>
           <p>First up, we have our beloved lecture slides. Those poor souls that are thrust into the spotlight each semester, only to be forgotten in the dusty archives of academia. They are the introverts of the academic world—full of knowledge but too shy to speak up.</p>
           <ul>
-            <li><strong>Title:</strong> "Concurrency and Synchronization"</li>
+            <li><strong>Title:</strong> Concurrency and Synchronization</li>
             <li><strong>Author:</strong> The one who shall not be named (because they’re probably regretting this semester already).</li>
             <li><strong>Date:</strong> Whenever caffeine levels were dangerously high.</li>
             <li><strong>Description:</strong> A glorious mix of bullet points, diagrams that look like they were drawn by a toddler, and enough jargon to make your head spin.</li>
@@ -186,7 +186,7 @@ export default function Practical6Page() {
           <p className="font-semibold">2. Textbook: The Heavyweight of Boredom</p>
           <p>Next, we have the textbook—that doorstop of knowledge that is thicker than a brick. You know, the one you pretend to read while actually scrolling through memes on your phone.</p>
           <ul>
-            <li><strong>Title:</strong> "The Art of Multiprocessor Programming"</li>
+            <li><strong>Title:</strong> The Art of Multiprocessor Programming</li>
             <li><strong>Authors:</strong> Nir Shavit and Maurice Herlihy (the dynamic duo of concurrency).</li>
             <li><strong>Year:</strong> Written in a time when dinosaurs roamed the Earth, or at least before you were born.</li>
             <li><strong>Description:</strong> A classic text that covers everything from locking mechanisms to memory models. Warning: may cause spontaneous naps during late-night cramming sessions.</li>
