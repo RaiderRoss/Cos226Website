@@ -5,6 +5,7 @@ import { Image } from "@nextui-org/react";
 import { Slider } from "@nextui-org/slider";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
 import { Divider } from "@nextui-org/react";
+import CodeBlock from '../../components/CodeBlock';
 export default function Practical6Page() {
   const [option, setOption] = useState(0);
   const [operation, setOperation] = useState(0);
@@ -37,6 +38,317 @@ export default function Practical6Page() {
     const op = operation === 0 ? "addOnly" : operation === 1 ? "addAndContains" : operation === 2 ? "addAndRemove" : "addAndRemoveAndContains";
     return `../${folder}Operations/${op}/combined_${level}_scenarios.png`;
   };
+  const nodeSnippit = `
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class node {
+  private String value;
+  public final Lock lock;
+  public int key;
+  public node next;
+
+  public node(String value) {
+    lock = new ReentrantLock();
+    this.value = value;
+    this.key = value.hashCode();
+    this.next = null;
+  }
+
+  public String getValue() {
+    return value;
+  }
+}
+`;
+  const baseSet = `
+  public abstract class baseSet {
+    public abstract boolean add(String element);
+    public abstract boolean remove(String element);
+    public abstract boolean contains(String element);
+    public String toString() {
+        return "baseSet";
+    }
+}
+  `
+  const coarseDirt = `
+  import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class coarseDirt extends baseSet {
+    private node headNode;
+    private Lock lock = new ReentrantLock();
+
+    public coarseDirt() {
+        headNode = new node("");
+        headNode.next = new node("\uffff");
+    }
+
+    public boolean add(String element) {
+        node pred, curr;
+        int key = element.hashCode();
+        lock.lock();
+        try {
+            pred = headNode;
+            curr = headNode.next;
+            while (curr.next!=null && curr.key < key) {
+                pred = curr;
+                curr = curr.next;
+            }
+            if (key == curr.key)
+                return false;
+            else {
+                node node = new node(element);
+                node.next = curr;
+                pred.next = node;
+                return true;
+            }
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    public boolean remove(String element) {
+        node pred, curr;
+        int key = element.hashCode();
+        lock.lock();
+        try {
+            pred = headNode;
+            curr = headNode.next;
+            while (curr.next!=null && curr.key < key) {
+                pred = curr;
+                curr = curr.next;
+            }
+            if (key == curr.key) {
+                pred.next = curr.next;
+                return true;
+            } else
+                return false;
+        } finally {
+            lock.unlock();
+        }
+    }
+    
+    public boolean contains(String element) {
+        node curr;
+        int key = element.hashCode();
+        lock.lock();
+        try {
+            curr = headNode.next;
+            while (curr.next!=null && curr.key < key) {
+                curr = curr.next;
+            }
+            return key == curr.key;
+        } finally {
+            lock.unlock();
+        }
+    }
+    public String toString() {
+        return "Coarse Grained";
+    }
+}
+
+  `
+  const fineSet = `
+  
+public class fineSet extends baseSet {
+
+    private node headNode;
+
+    public fineSet() {
+        headNode = new node("");
+        headNode.next = new node("\uffff");
+    }
+
+    public boolean add(String element) {
+        int key = element.hashCode();
+        headNode.lock.lock();
+        node pred = headNode;
+        try {
+            node curr = headNode.next;
+            curr.lock.lock();
+            try {
+                while (curr.next != null && curr.key < key) {
+                    pred.lock.unlock();
+                    pred = curr;
+                    curr = curr.next;
+                    curr.lock.lock();
+                }
+                if (curr.key == key) {
+                    return false;
+                }
+                node newNode = new node(element);
+                newNode.next = curr;
+                pred.next = newNode;
+                return true;
+            } finally {
+                curr.lock.unlock();
+            }
+        } finally {
+            pred.lock.unlock();
+        }
+    }
+
+    public boolean remove(String element) {
+        int key = element.hashCode();
+        node pred, curr;
+        headNode.lock.lock();
+        pred = headNode;
+        try {
+            curr = headNode.next;
+            curr.lock.lock();
+            try {
+                while (curr.next != null && curr.key < key) {
+                    pred.lock.unlock();
+                    pred = curr;
+                    curr = curr.next;
+                    curr.lock.lock();
+                }
+                if (curr.key == key) {
+                    pred.next = curr.next;
+                    return true;
+                }
+                return false;
+            } finally {
+                curr.lock.unlock();
+            }
+        } finally {
+            pred.lock.unlock();
+        }
+    }
+
+    public boolean contains(String element) {
+        int key = element.hashCode();
+        headNode.lock.lock();
+        node curr = headNode;
+        try {
+            while (curr.next != null && curr.key < key) {
+                node pred = curr;
+                curr = curr.next;
+                pred.lock.unlock();
+                curr.lock.lock();
+            }
+            return curr.key == key;
+        } finally {
+            curr.lock.unlock();
+        }
+
+    }
+
+    public String toString() {
+        return "Fine Grained";
+
+    }
+}
+
+  `
+  const hopefulSet = `
+  
+public class hopefuleSet extends baseSet {
+
+    private node headNode;
+
+    public hopefuleSet() {
+        headNode = new node("");
+        headNode.next = new node("\uffff");
+    }
+
+    private boolean validate(node pred, node curr) {
+        node node = headNode;
+        while (node.key <= pred.key) {
+            if (node == pred) {
+                return pred.next == curr;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
+    public boolean add(String element) {
+        int key = element.hashCode();
+        while (true) {
+            node pred = headNode;
+            node curr = pred.next;
+            while (curr.key < key) {
+                pred = curr;
+                curr = curr.next;
+            }
+            pred.lock.lock();
+            curr.lock.lock();
+            try {
+                if (validate(pred, curr)) {
+                    if (curr.key == key) {
+                        return false;
+                    } else {
+                        node node = new node(element);
+                        node.next = curr;
+                        pred.next = node;
+                        return true;
+                    }
+                }
+            } finally {
+                pred.lock.unlock();
+                curr.lock.unlock();
+            }
+        }
+    }
+
+    public boolean remove(String element) {
+        int key = element.hashCode();
+        while (true) {
+            node pred = headNode;
+            node curr = pred.next;
+            while (curr.key < key) {
+                pred = curr;
+                curr = curr.next;
+            }
+            pred.lock.lock();
+            curr.lock.lock();
+            try {
+                if (validate(pred, curr)) {
+                    if (curr.key == key) {
+                        pred.next = curr.next;
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } finally {
+                pred.lock.unlock();
+                curr.lock.unlock();
+            }
+        }
+    }
+
+    public boolean contains(String element) {
+        int key = element.hashCode();
+        while (true) {
+            node pred = headNode;
+            node curr = headNode.next;
+            while (curr.key < key) {
+                pred = curr;
+                curr = curr.next;
+            }
+            pred.lock.lock();
+            curr.lock.lock();
+
+            try {
+                if (validate(pred, curr)) {
+                    return (curr.key == key);
+                }
+            } finally {
+                pred.lock.unlock();
+                curr.lock.unlock();
+            }
+        }
+    }
+
+    public String toString() {
+        return "Optimistic";
+    }
+
+}
+
+  `
 
   return (
     <div className="flex flex-col items-center text-start">
@@ -148,12 +460,12 @@ export default function Practical6Page() {
 
           <p className="font-semibold">Medium Contention</p>
           <ul>
-          <li>•Same results as high contention</li>
+            <li>•Same results as high contention</li>
           </ul>
 
           <p className="font-semibold">Low Contention</p>
           <ul>
-          <li>•Same results as medium and high contention</li>
+            <li>•Same results as medium and high contention</li>
           </ul>
 
 
@@ -188,6 +500,27 @@ export default function Practical6Page() {
             <li><strong>Year:</strong> Written in a time when dinosaurs roamed the Earth, or at least before you were born.</li>
             <li><strong>Description:</strong> A classic text that covers everything from locking mechanisms to memory models. Warning: may cause spontaneous naps during late-night cramming sessions.</li>
           </ul>
+        </AccordionItem>
+        <AccordionItem key="6" aria-label="Chapter 5" title="Chapter 5: Code Examples">
+          <p>Welcome to the practical side of our concurrency journey! In this chapter, we'll dive into code snippets that illustrate the concepts discussed in previous chapters. Whether you're a seasoned developer or just starting out, these examples will help solidify your understanding of concurrent systems.</p>
+
+          <Divider className="my-4" />
+
+          <p className="font-semibold">Node class</p>
+          <CodeBlock code={nodeSnippit} />
+          <Divider className="my-4" />
+          <p className="font-semibold">Base Set</p>
+          <CodeBlock code={baseSet} />
+          <Divider className="my-4" />
+          <p className="font-semibold">Coarse dirt</p>
+          <CodeBlock code={coarseDirt} />
+          <Divider className="my-4" />
+          <p className="font-semibold">Fine set</p>
+          <CodeBlock code={fineSet} />
+          <Divider className="my-4" />
+          <p className="font-semibold">Hopeful set</p>
+          <CodeBlock code={hopefulSet} />
+          <Divider className="my-4" />
         </AccordionItem>
       </Accordion>
       <Button onPress={onOpen} color="secondary">Show Results</Button>
