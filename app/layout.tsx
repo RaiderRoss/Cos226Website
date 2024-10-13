@@ -1,3 +1,4 @@
+
 import "@/styles/globals.css";
 import { Metadata, Viewport } from "next";
 import { Link } from "@nextui-org/link";
@@ -41,8 +42,25 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
+        <div
+          className="fixed inset-0 z-0 bg-auto"
+          style={{
+            backgroundImage: "url('/images/dark-background.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div
+            className="absolute inset-0 z-10"
+            style={{
+              backgroundColor: "rgba(0, 0, 0, 0.7)"
+            }}
+          />
+          <div className="absolute inset-0 backdrop-blur-sm"></div>
+        </div>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+          <div className="relative flex flex-col min-h-screen">
             <Navbar />
             <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
               {children}
@@ -58,7 +76,6 @@ export default function RootLayout({
                 <p className="bg-gradient-to-r from-pink-500 to-purple-500 text-transparent bg-clip-text">
                   Cos 226 Module
                 </p>
-
               </Link>
             </footer>
           </div>
