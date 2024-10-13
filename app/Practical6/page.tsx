@@ -502,7 +502,7 @@ public class hopefuleSet extends baseSet {
           </ul>
         </AccordionItem>
         <AccordionItem key="6" aria-label="Chapter 5" title="Chapter 5: Code Examples">
-          <p>Welcome to the practical side of our concurrency journey! In this chapter, we'll dive into code snippets that illustrate the concepts discussed in previous chapters. Whether you're a seasoned developer or just starting out, these examples will help solidify your understanding of concurrent systems.</p>
+          <p>Welcome to the practical side of our concurrency journey! In this chapter, we will dive into code snippets that illustrate the concepts discussed in previous chapters. Whether you are a seasoned developer or just starting out, these examples will help solidify your understanding of concurrent systems.</p>
 
           <Divider className="my-4" />
 
