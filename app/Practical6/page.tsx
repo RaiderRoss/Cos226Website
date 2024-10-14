@@ -416,6 +416,7 @@ public class hopefuleSet extends baseSet {
             <li>•The synchronization methods all peform equally independant of the type of operation</li>
           </ul>
 
+          <p className="font-semibold">Conclusion with 100 operations they do not have a big enough impact to change the results</p>
           <Divider className="my-4" />
 
           <p className="font-semibold">Section 2: Running at 500 operations</p>
@@ -441,7 +442,7 @@ public class hopefuleSet extends baseSet {
           <ul>
             <li>•Same results as medium and high contention combined</li>
           </ul>
-
+          <p className="font-semibold">Conclusion with 500 operations fine grained suffers from calling the contains method</p>
           <Divider className="my-4" />
 
           <p className="font-semibold">Section 3: Running at 1000 operations</p>
@@ -467,6 +468,7 @@ public class hopefuleSet extends baseSet {
           <ul>
             <li>•Same results as medium and high contention</li>
           </ul>
+          <p className="font-semibold">Conclusion with 1000 operations with add and remove and contains optimistic suffers because of its validation method since there are much more elements to go through</p>
 
 
           <Divider className="my-4" />
