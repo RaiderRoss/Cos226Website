@@ -21,8 +21,8 @@ export const siteConfig = {
       href: "/Practical6",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Assignment 2",
+      href: "/Ass2",
     },
    
   ],

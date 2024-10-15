@@ -1,14 +1,14 @@
-export default function Practical6Layout({
+export default function Ass2Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div
+         <div
         className="fixed inset-0 z-0 bg-auto"
         style={{
-          backgroundImage: "url('/images/dark-background.jpg')",
+          backgroundImage: "url('/images/pool-background.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center 40%",
           backgroundRepeat: "no-repeat",

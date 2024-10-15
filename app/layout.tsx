@@ -42,23 +42,23 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
+         <div
+        className="fixed inset-0 z-0 bg-auto"
+        style={{
+          backgroundImage: "url('/images/home-background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 40%",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
         <div
-          className="fixed inset-0 z-0 bg-auto"
+          className="absolute inset-0 z-10"
           style={{
-            backgroundImage: "url('/images/dark-background.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center 40%",
-            backgroundRepeat: "no-repeat",
+            backgroundColor: "rgba(0, 0, 0, 0.7)"
           }}
-        >
-          <div
-            className="absolute inset-0 z-10"
-            style={{
-              backgroundColor: "rgba(0, 0, 0, 0.7)"
-            }}
-          />
-          <div className="absolute inset-0 backdrop-blur-sm"></div>
-        </div>
+        />
+        <div className="absolute inset-0 backdrop-blur-sm"></div>
+      </div>
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col min-h-screen">
             <Navbar />

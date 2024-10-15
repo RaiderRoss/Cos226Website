@@ -351,7 +351,9 @@ public class hopefuleSet extends baseSet {
   `
 
   return (
+    
     <div className="flex flex-col items-center text-start">
+      
       <br />
       <Accordion defaultExpandedKeys={["1"]} selectionMode="multiple">
         <AccordionItem key="1" aria-label="User Info" title="Chapter 0: Details">
