@@ -49,14 +49,12 @@ export default function Ass2Page() {
               </ModalHeader>
 
               <ModalBody>
-                <video
-                  width={1000}
-                  height={800}
-                  autoPlay
-                >
+                <video width={1000} height={800} autoPlay>
                   <source src={"./modal/Kung.mp4"} type="video/mp4" />
+                  <track kind="captions" srcLang="en" label="English" default />
                   Your browser does not support the video tag.
                 </video>
+
               </ModalBody>
               <ModalFooter>
                 <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={() => {
