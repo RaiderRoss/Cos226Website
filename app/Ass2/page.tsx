@@ -49,11 +49,18 @@ export default function Ass2Page() {
               </ModalHeader>
 
               <ModalBody>
-                <video width={1000} height={800} autoPlay>
-                  <source src={"./modal/Kung.mp4"} type="video/mp4" />
-                  <track kind="captions" srcLang="en" label="English" default />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  width="1000"
+                  height="800"
+                  src="https://www.youtube.com/embed/QIlOd1VVuo8?autoplay=1"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen>
+                </iframe>
+
+
+
 
               </ModalBody>
               <ModalFooter>
