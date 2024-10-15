@@ -34,10 +34,10 @@ export default function Ass2Page() {
         radius="lg"
         classNames={{
           body: "py-6",
-          backdrop: "bg-[#292f46]/70 backdrop-opacity-10",
-          base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-          header: "border-b-[1px] border-[#292f46]",
-          footer: "border-t-[1px] border-[#292f46]",
+          backdrop: "bg-[#6b3b49]/70 backdrop-opacity-10",
+          base: "border-[#6b3b49] bg-[#733939] dark:bg-[#733939] text-[#a8b0d3]",
+          header: "border-b-[1px] border-[#6b3b49]",
+          footer: "border-t-[1px] border-[#6b3b49]",
         }}
       >
         <ModalContent>
@@ -49,22 +49,18 @@ export default function Ass2Page() {
               </ModalHeader>
 
               <ModalBody>
-                <iframe
-                  width="1000"
-                  height="800"
-                  src="https://www.youtube.com/embed/QIlOd1VVuo8?autoplay=1"
-                  title="YouTube video player"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen>
-                </iframe>
+                <video width="1000" height="800" autoPlay>
+                  <source src="https://i.imgur.com/YWYV6Fd.mp4" type="video/mp4" />
+                  <track kind="captions" srcLang="en" label="English" default />
+                  Your browser does not support the video tag.
+                </video>
 
 
 
 
               </ModalBody>
               <ModalFooter>
-                <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={() => {
+                <Button className="bg-[#5e1a1a] shadow-lg shadow-red-950/20" onPress={() => {
 
                   onClose();
                   setHasBeenOpened(true);
