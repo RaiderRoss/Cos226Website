@@ -8,8 +8,19 @@ import CodeBlock from '../../components/CodeBlock';
 
 export default function Ass2Page() {
 
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const [hasBeenOpened, setHasBeenOpened] = useState(false);
+  const [isVideoVisible, setVideoVisible] = useState(false);
+
+  const onOpen = () => {
+    setVideoVisible(true);
+  };
+
+  const handleVideoEnd = () => {
+    setHasBeenOpened(true);
+    setVideoVisible(false);
+  };
+
 
 
   return (
@@ -26,52 +37,35 @@ export default function Ass2Page() {
 
       </Accordion>
       <Button onPress={onOpen} color="secondary">Show Results</Button>
-      <Modal
-        size="5xl"
-        backdrop="opaque"
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        radius="lg"
-        classNames={{
-          body: "py-6",
-          backdrop: "bg-[#6b3b49]/70 backdrop-opacity-10",
-          base: "border-[#6b3b49] bg-[#733939] dark:bg-[#733939] text-[#a8b0d3]",
-          header: "border-b-[1px] border-[#6b3b49]",
-          footer: "border-t-[1px] border-[#6b3b49]",
-        }}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">No RickRoll this time
-
-
-              </ModalHeader>
-
-              <ModalBody>
-                <video width="1000" height="800" autoPlay>
-                  <source src="https://i.imgur.com/YWYV6Fd.mp4" type="video/mp4" />
-                  <track kind="captions" srcLang="en" label="English" default />
-                  Your browser does not support the video tag.
-                </video>
-
+      {isVideoVisible && (
+        <div
+          className="fixed inset-0 z-0"
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+          }}
+        >
+          <video
+            autoPlay
+            onEnded={handleVideoEnd}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              zIndex: 1,
+            }}
+          >
+            <source src="https://i.imgur.com/Y3JEqNw.mp4" type="video/mp4" />
+            <track kind="captions" srcLang="en" label="English" default />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      )}
 
 
 
-              </ModalBody>
-              <ModalFooter>
-                <Button className="bg-[#5e1a1a] shadow-lg shadow-red-950/20" onPress={() => {
-
-                  onClose();
-                  setHasBeenOpened(true);
-                }}>
-                  AGAIN?!
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
       {hasBeenOpened && (
         <>
           <br />
