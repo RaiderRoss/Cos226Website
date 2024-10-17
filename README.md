@@ -1,53 +1,20 @@
-# Next.js & NextUI Template
+# COS226 Concurrency Reports
+Welcome to COS226 Reports – where we delve deep into the intricate world of threads, synchronization, and concurrency! Whether you're a student, developer, or simply curious about Java's concurrency mechanisms, this platform offers you a place to explore key concepts, find practical examples, and gain insights into the sometimes chaotic, but always exciting, world of multi-threading.
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+## About
+Concurrency in programming often feels like juggling several balls – all while walking on a tightrope. But fear not! Our website is designed to simplify these complex topics, taking you step-by-step through the core concepts of Java concurrency and providing real-world examples that make sense.
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+You'll find everything from an introduction to threads, synchronized methods, and locks, to deep dives into Java's ExecutorService, ForkJoinPool, and more advanced concurrency patterns. We aim to make learning fun and engaging, with intuitive explanations and practical code snippets.
 
-## Technologies Used
-
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
-
+## Features
+Detailed Reports: Comprehensive breakdowns of concurrency problems, solutions, and patterns using Java.
+Hands-on Examples: Test your skills with practical code snippets and real-world examples, exploring the magic of threads.
+Concurrency Explained: We aim to make the seemingly impossible possible – understanding threads and concurrency in Java with clarity.
+Interactive Learning: Navigate through fun exercises to unravel the mysteries of race conditions, deadlocks, and more!
 ## How to Use
-
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+Explore Concepts: Navigate through our site to explore various topics in Java concurrency, from beginner-friendly overviews to more advanced discussions.
+Dive into Practical Examples: Visit our examples and see how concurrency works in real-world Java applications. Each topic comes with code snippets, so you can easily follow along.
+Check Your Understanding: Take part in our quizzes and exercises to test your knowledge and sharpen your concurrency skills.
 
 ## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+All content is licensed under the MIT license, so feel free to use the knowledge here to power your next multi-threaded Java application!
