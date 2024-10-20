@@ -9,18 +9,18 @@ import CodeBlock from '../../components/CodeBlock';
 export default function Ass2Page() {
 
 
-  const [hasBeenOpened, setHasBeenOpened] = useState(false);
-  const [isVideoVisible, setVideoVisible] = useState(false);
+    const [hasBeenOpened, setHasBeenOpened] = useState(false);
+    const [isVideoVisible, setVideoVisible] = useState(false);
 
-  const onOpen = () => {
-    setVideoVisible(true);
-  };
+    const onOpen = () => {
+        setVideoVisible(true);
+    };
 
-  const handleVideoEnd = () => {
-    setHasBeenOpened(true);
-    setVideoVisible(false);
-  };
-  const BSomethingNode = `
+    const handleVideoEnd = () => {
+        setHasBeenOpened(true);
+        setVideoVisible(false);
+    };
+    const BSomethingNode = `
 import java.util.ArrayList;
 import java.lang.reflect.Method;
 public class BSomethingNode {
@@ -38,7 +38,7 @@ public class BSomethingNode {
     }
 }
 `;
-  const Queue = `
+    const Queue = `
 public class Queue<T> {
     private Node<T> head;
     private Node<T> tail;
@@ -100,7 +100,7 @@ public class Queue<T> {
 }
 
 `;
-  const BasicTree = `
+    const BasicTree = `
 import java.util.ArrayList;
 import java.lang.reflect.Method;
 public class BasicBTree<T> {
@@ -151,7 +151,7 @@ public class BasicBTree<T> {
 }
 
 `;
-  const Test = `
+    const Test = `
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -169,7 +169,7 @@ import java.lang.annotation.Target;
     String dependency() default "No dependency";
 }   
 `
-  const TestRunner = `
+    const TestRunner = `
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -291,7 +291,7 @@ public class TestRunner {
 }
 
 `
-  const TestingFrameWork = `
+    const TestingFrameWork = `
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -1318,7 +1318,7 @@ public class TestingFrameWork {
     }
 }
 `
-  const ThreadPool = `
+    const ThreadPool = `
 public class SwimmingPool {
     private final Worker[] workers;
     private final SequentialWorker sequentialWorker;
@@ -1439,7 +1439,7 @@ public class SwimmingPool {
     }
 }
 `
-  const output = `
+    const output = `
 └── test1
     └── test2
 └── test3
@@ -1533,143 +1533,155 @@ public class SwimmingPool {
 
 
 
-  return (
-    <div className="flex flex-col items-center text-start">
-      <br />
-      <Accordion defaultExpandedKeys={["1"]} selectionMode="multiple">
-        <AccordionItem key="1" aria-label="User Info" title="Chapter 0: The Glorious Details You Didn't Ask For But Are Required">
-          <p>u23545080</p>
-          <p>Aidan McKenzie</p>
-        </AccordionItem>
+    return (
+        <div className="flex flex-col items-center text-start">
+            <br />
+            <Accordion defaultExpandedKeys={["1"]} selectionMode="multiple">
+                <AccordionItem key="1" aria-label="User Info" title="Chapter 0: The Glorious Details You Didn't Ask For But Are Required">
+                    <p>u23545080</p>
+                    <p>Aidan McKenzie</p>
+                </AccordionItem>
 
 
-        <AccordionItem key="2" title="What Ridiculous Output Will This Code Produce Now?">
-          <Accordion selectionMode="multiple" >
-            <AccordionItem key="1" title="Testing">
-              <CodeBlock code={TestingFrameWork}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%`, fontSize: '50%' }} />
-              <Divider className="my-4" />
-              <CodeBlock code={TestRunner}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `170%`, fontSize: '70%' }} />
-            </AccordionItem>
-            <AccordionItem key="2" title="Annotations">
-              <CodeBlock code={Test}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
-            </AccordionItem>
-            <AccordionItem key="3" title="Data Structures">
-              <CodeBlock code={BSomethingNode}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }} />
-              <Divider className="my-4" />
-              <CodeBlock code={BasicTree}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%`, fontSize: '70%' }} />
-              <Divider className="my-4" />
-              <CodeBlock code={Queue}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
-            </AccordionItem>
-            <AccordionItem key="4" title="Thread Pool">
-              <CodeBlock
-                code={ThreadPool}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }}
-              />
-            </AccordionItem>
-            <AccordionItem key="5" title="Example tree output">
-              <CodeBlock
-                code={output}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `65%` }}
-              />
+                <AccordionItem key="2" title="What Ridiculous Output Will This Code Produce Now?">
+                    <Accordion selectionMode="multiple" >
+                        <AccordionItem key="1" title="Testing">
+                            <CodeBlock code={TestingFrameWork}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%`, fontSize: '50%' }} />
+                            <Divider className="my-4" />
+                            <CodeBlock code={TestRunner}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `170%`, fontSize: '70%' }} />
+                        </AccordionItem>
+                        <AccordionItem key="2" title="Annotations">
+                            <CodeBlock code={Test}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
+                        </AccordionItem>
+                        <AccordionItem key="3" title="Data Structures">
+                            <CodeBlock code={BSomethingNode}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }} />
+                            <Divider className="my-4" />
+                            <CodeBlock code={BasicTree}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%`, fontSize: '70%' }} />
+                            <Divider className="my-4" />
+                            <CodeBlock code={Queue}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
+                        </AccordionItem>
+                        <AccordionItem key="4" title="Thread Pool">
+                            <CodeBlock
+                                code={ThreadPool}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }}
+                            />
+                        </AccordionItem>
+                        <AccordionItem key="5" title="Example tree output">
+                            <CodeBlock
+                                code={output}
+                                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `65%` }}
+                            />
 
-            </AccordionItem>
-          </Accordion>
-        </AccordionItem>
+                        </AccordionItem>
+                    </Accordion>
+                </AccordionItem>
+                <AccordionItem key="3" aria-label="User Info" title="Explanation of the results">
+                    <p>With the types of testing I did it contained too many sequential parts.
+                        Which in this case were the dependency tests. This forced the tests to run sequentially.
+                        Whereas the other tests were able to run in parallel.
+                        <Divider className="my-4" />
+                        In the results we can see that on the SingleRun the parrellel was significantly more unstable/slower
+                        than the sequential.
+                        <Divider className="my-4" />
+                        For the MultipleRuns the parrellel and sequential performed similarly. The parrellel gained 
+                        a slight advantage after 16 threads and this is due to the overhead of creating the threads.
+                    </p>
+                    
+                </AccordionItem>
+            </Accordion>
+            {!isVideoVisible && (
+                <Button onPress={onOpen} color="secondary">Show Results</Button>
+            )
+            }
+            {isVideoVisible && (
+                <div
+                    className="fixed inset-0 z-0"
+                    style={{
+                        backgroundColor: "rgba(0, 0, 0, 0.7)",
+                    }}
+                >
+                    <video
+                        autoPlay
+                        onEnded={handleVideoEnd}
+                        style={{
+                            width: '120%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            zIndex: 1,
+                        }}
+                    >
+                        <source src="https://i.imgur.com/3NjCTPz.mp4" type="video/mp4" />
+                        <track kind="captions" srcLang="en" label="English" default />
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            )}
 
-      </Accordion>
-      {!isVideoVisible && (
-        <Button onPress={onOpen} color="secondary">Show Results</Button>
-      )
-      }
-      {isVideoVisible && (
-        <div
-          className="fixed inset-0 z-0"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-          }}
-        >
-          <video
-            autoPlay
-            onEnded={handleVideoEnd}
-            style={{
-              width: '120%',
-              height: '100%',
-              objectFit: 'cover',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              zIndex: 1,
-            }}
-          >
-            <source src="https://i.imgur.com/3NjCTPz.mp4" type="video/mp4" />
-            <track kind="captions" srcLang="en" label="English" default />
-            Your browser does not support the video tag.
-          </video>
+
+            {hasBeenOpened && (
+                <>
+                    <br />
+                    <Button color="danger" onPress={() => setHasBeenOpened(false)}>Hide Results</Button>
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/SingleRun/parrallel_scenario.png"}
+                    />
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/SingleRun/sequential_scenario.png"}
+                    />
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/MultipleRuns/10/sequential_scenario.png"}
+                    />
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/MultipleRuns/10/parrallel_scenario.png"}
+                    />
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/MultipleRuns/25/sequential_scenario.png"}
+                    />
+                    <br />
+                    <Image
+                        isBlurred
+                        width={800}
+                        height={400}
+                        alt="Results"
+                        src={"/plots/MultipleRuns/25/parrallel_scenario.png"}
+                    />
+                    <br />
+                </>
+            )}
         </div>
-      )}
-
-
-      {hasBeenOpened && (
-        <>
-          <br />
-          <Button color="danger" onPress={() => setHasBeenOpened(false)}>Hide Results</Button>
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/SingleRun/parrallel_scenario.png"}
-          />
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/SingleRun/sequential_scenario.png"}
-          />
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/MultipleRuns/10/sequential_scenario.png"}
-          />
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/MultipleRuns/10/parrallel_scenario.png"}
-          />
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/MultipleRuns/25/sequential_scenario.png"}
-          />
-          <br />
-          <Image
-            isBlurred
-            width={800}
-            height={400}
-            alt="Results"
-            src={"/plots/MultipleRuns/25/parrallel_scenario.png"}
-          />
-          <br />
-        </>
-      )}
-    </div>
-  );
+    );
 }

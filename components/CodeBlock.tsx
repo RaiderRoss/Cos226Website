@@ -14,7 +14,16 @@ const CodeBlock: React.FC<CodeBlockProps> = ({ code, style }) => {
   }, [code]);
 
   return (
-    <pre style={{textSizeAdjust:'1px', width: '100%', overflowX: 'auto', whiteSpace: 'pre-wrap', ...style }}>
+    <pre
+      style={{
+        userSelect: 'none',  // Disables text selection
+        width: '100%',
+        overflowX: 'auto',
+        whiteSpace: 'pre-wrap',
+        ...style,
+      }}
+      onCopy={(e) => e.preventDefault()}  // Disables copying
+    >
       <code className="language-java">{code}</code>
     </pre>
   );
