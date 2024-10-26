@@ -13,12 +13,12 @@ export const siteConfig = {
       href: "/about",
     },
     {
-      label: "Prac 5",
-      href: "/Practical5",
-    },
-    {
       label: "Prac 6",
       href: "/Practical6",
+    },
+    {
+      label: "Prac 7",
+      href: "/Practical7",
     },
     {
       label: "Assignment 2",

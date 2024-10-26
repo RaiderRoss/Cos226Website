@@ -36,7 +36,7 @@ export default function Practical6Page() {
     const folder = option === 0 ? "100" : option === 1 ? "500" : "1000";
     const level = contention === 0 ? "high" : contention === 1 ? "medium" : "low";
     const op = operation === 0 ? "addOnly" : operation === 1 ? "addAndContains" : operation === 2 ? "addAndRemove" : "addAndRemoveAndContains";
-    return `../${folder}Operations/${op}/combined_${level}_scenarios.png`;
+    return `../Prac6Plots/${folder}Operations/${op}/combined_${level}_scenarios.png`;
   };
   const nodeSnippit = `
 import java.util.concurrent.locks.Lock;

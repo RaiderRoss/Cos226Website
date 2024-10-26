@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { Image } from "@nextui-org/react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
+import {Button } from "@nextui-org/react";
 import { Divider } from "@nextui-org/react";
 import CodeBlock from '../../components/CodeBlock';
 
