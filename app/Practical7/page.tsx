@@ -20,7 +20,7 @@ export default function Practical7Page() {
     return `../Prac7Plots/${folder}Operations/${op}/combined_${level}_scenarios.png`;
   };
   useEffect(() => {
-    const audioInstance = new Audio('/modal/sound.mp3');
+    const audioInstance = new Audio('/modal/sound2.mp3');
     setAudio(audioInstance);
     return () => {
       audioInstance.pause();
@@ -31,6 +31,7 @@ export default function Practical7Page() {
   useEffect(() => {
     if (isOpen && audio) {
       audio.currentTime = 0;
+      audio.volume = 0.1;
       audio.play().catch((error) => {
         console.error("Audio playback failed:", error);
       });
@@ -643,12 +644,14 @@ public class Main {
 `
   return (
     <div className="flex flex-col items-center text-start">
-      <Accordion defaultExpandedKeys={["1"]} selectionMode="multiple">
+      <Accordion defaultExpandedKeys={["1"]} selectionMode="multiple" className="w-full sm:w-96 md:w-128 lg:w-160">
         <AccordionItem key="1" aria-label="User Info" title="Chapter 0: Details">
           <p>u23545080</p>
           <p>Aidan McKenzie</p>
         </AccordionItem>
-        <AccordionItem key="2" title="What Ridiculous Output Will This Code Produce Now?">
+        <AccordionItem key="2" title="Explanations of the results">
+        </AccordionItem>
+        <AccordionItem key="3" title="Random code I had to do">
           <Accordion selectionMode="multiple" >
             <AccordionItem key="1" title="Testing">
               <CodeBlock code={test}
@@ -663,13 +666,13 @@ public class Main {
             </AccordionItem>
             <AccordionItem key="3" title="Helper classes">
               <CodeBlock code={woahHandler}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `110%` }} />
               <Divider className="my-4" />
               <CodeBlock code={lockFreeExchanger}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%`, fontSize: '70%' }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%`, fontSize: '80%' }} />
               <Divider className="my-4" />
               <CodeBlock code={eliminationArray}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%` }} />
               <Divider className="my-4" />
               <CodeBlock code={rangePolicy}
                 style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
@@ -687,7 +690,7 @@ public class Main {
               <Divider className="my-4" />
               <CodeBlock
                 code={eleminationBackoffStack}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }}
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `170%`, fontSize: '90%' }}
               />
             </AccordionItem>
           </Accordion>
@@ -698,47 +701,51 @@ public class Main {
         backdrop="opaque"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        radius="lg"
+        size="5xl"
         classNames={{
           body: "py-6",
-          backdrop: "bg-[#292f46]/70 backdrop-opacity-10",
-          base: "border-[#292f46] bg-[#19172c] dark:bg-[#19172c] text-[#a8b0d3]",
-          header: "border-b-[1px] border-[#292f46]",
-          footer: "border-t-[1px] border-[#292f46]",
+          backdrop: "bg-[#3b4c63]/70 backdrop-opacity-10",
+          base: "border-[#3b4c63] bg-[#1c2a3a] dark:bg-[#1c2a3a] text-[#8aa0b8]",
+          header: "border-b-[1px] border-[#3b4c63]",
+          footer: "border-t-[1px] border-[#3b4c63]",
         }}
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
-                I’m really going to miss you all so much! 😔
-                To Zane and Keanu, thank you both for everything. You’ve been with me since COS 110, guiding me through the challenges and dumb edge cases.
-                You’ve been more than just tutors you have been amazing friends too, always there with patience, wisdom, and just the right amount of tough love
-                when I needed it. I genuinely don’t know how I would have made it this far without you two by my side.
-                And to all the other tutors I’ve had along the way—each of you has made such a huge impact.
-                I hope you all go on to do Honours because the passion and dedication you bring to your work is 
-                something that more students should experience. 
-                I want you to know how much I appreciate the time, energy, and care, you have put into helping us succeed.
-                Thank you all for making my journey unforgettable. I’m so grateful to have had such an amazing support system, and I’ll carry 
-                everything you taught me forward into the future.
+              <ModalHeader>
+                <p className="bg-gradient-to-r from-green-300 to-teal-600 text-transparent bg-clip-text">
+                  Thank You to My Amazing Tutors
+                </p>
               </ModalHeader>
+              <ModalBody className="flex flex-col gap-1">
+                <p>
+                  I’m really going to miss you all so much!<br></br>
+                  <br />
+                  To Zane and Keanu, thank you both for everything. Keanu You’ve been with me since 110 and Zane since 212, guiding me through the challenges and dumb edge cases.
+                  You’ve been more than just tutors you have been amazing friends too, always there with patience, wisdom, and just the right amount of tough love
+                  when I needed it. I genuinely don’t know how I would have made it this far without you two by my side.
+                </p>
+                <br />
+                <p>
+                  And to all the other tutors I’ve had along the way each of you have been so kind, patient, and understanding.
+                  I hope you all go on to do Honours because I will miss you all and I know you will do great things.
+                </p>
+                <br />
+                <p>
+                  Thank you all for making my journey unforgettable. I’ll carry
+                  everything you taught me forward into the future.
+                </p>
 
-              <ModalBody>
-                <Image
-                  isBlurred
-                  width={800}
-                  height={400}
-                  alt="Rickroll"
-                  src={"./modal/rickroll.gif"}
-                />
               </ModalBody>
+
               <ModalFooter>
-                <Button className="bg-[#6f4ef2] shadow-lg shadow-indigo-500/20" onPress={() => {
+                <Button className="bg-[#4a7bc5] shadow-lg shadow-indigo-500/20" onPress={() => {
                   audio?.pause();
                   onClose();
                   setHasBeenOpened(true);
                 }}>
-                  You know I had to do it one last time
+                  Don’t cry because it’s over, smile because it happened. - Dr. Seuss
                 </Button>
               </ModalFooter>
             </>
