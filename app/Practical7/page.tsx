@@ -718,7 +718,7 @@ public class Main {
                 And to all the other tutors I’ve had along the way—each of you has made such a huge impact.
                 I hope you all go on to do Honours because the passion and dedication you bring to your work is 
                 something that more students should experience. 
-                I want you to know how much I appreciate the time, energy, and care you've put into helping us succeed.
+                I want you to know how much I appreciate the time, energy, and care, you have put into helping us succeed.
                 Thank you all for making my journey unforgettable. I’m so grateful to have had such an amazing support system, and I’ll carry 
                 everything you taught me forward into the future.
               </ModalHeader>
