@@ -650,23 +650,34 @@ public class Main {
           <p>Aidan McKenzie</p>
         </AccordionItem>
         <AccordionItem key="2" title="Explanations of the results">
+          <ul>
+            <li>Low Contention: We can see all implementations perform equally accross all cases. Except EliminationBackoffStack performs poorly under low contention</li>
+            <Divider className="my-4" />
+            <li>Medium Contention: We can see at 500 operations the EliminationBackoffStack performs poorly when only doing push and with push and pop it performs worse the more threads you have. But on other cases it peforms well </li>
+            <Divider className="my-4" />
+            <li>High Contention: We can see throughout the cases the EliminationBackoffStack has random spikes but on average performs well. We can see that lock free performs the best and this is because it does not have any locks which create over head. And the back off time is small enough to not create a massive increase in the time it takes to complete.</li>
+            <Divider className="my-4" />
+            <li>Conclusion: The statement ’At low levels of contention, the performance of EliminationBackoffStack is comparable to
+              LockFreeStack. However, at high contention the number of successful eliminations will
+              increase, allowing more operations to be completed in parallel’ is true to some degree as it does not perform well in all cases</li>
+          </ul>
         </AccordionItem>
         <AccordionItem key="3" title="Random code I had to do">
           <Accordion selectionMode="multiple" >
             <AccordionItem key="1" title="Testing">
               <CodeBlock code={test}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%`, fontSize: '60%' }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `200%`, fontSize: '60%' }} />
             </AccordionItem>
             <AccordionItem key="2" title="Basic node and stack">
               <CodeBlock code={node}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `80%` }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
               <Divider className="my-4" />
               <CodeBlock code={stack}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `80%` }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `100%` }} />
             </AccordionItem>
             <AccordionItem key="3" title="Helper classes">
               <CodeBlock code={woahHandler}
-                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `110%` }} />
+                style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `150%` }} />
               <Divider className="my-4" />
               <CodeBlock code={lockFreeExchanger}
                 style={{ backgroundColor: '#282c34', color: 'white', padding: '20px', width: `160%`, fontSize: '80%' }} />
